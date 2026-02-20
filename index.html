@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Portfolio Website</title>
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">Radithya Wirasena Kuncoro</a>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="services.html">Services</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+    <section class="home">
+      <div class="home-img">
+        <img
+          src="image/pap1.jpeg"
+          alt="Profile Picture"
+        />
+      </div>
+      <div class="home-content">
+        <h1>Hi, It's <span>Radithya</span></h1>
+        <h3 class="typing-text"><span></span><span class="cursor">|</span></h3>
+        <p>
+          Halo, saya radithya, seorang web developer yang berfokus pada platform edukasi.
+          Saya terbiasa bekerja dengan PHP/MySQL untuk membangun sistem yang modular dan mudah dipelihara,
+          serta memiliki pengalaman dalam memperbaiki UI/UX agar lebih jelas dan responsif. 
+          
+          Saya senang menggabungkan teknologi dengan desain minimalis,
+          dan percaya bahwa setiap detail kecil bisa membuat pengalaman pengguna lebih menyenangkan.
+          Tujuan saya adalah membantu tim menciptakan aplikasi yang aman, scalable, dan relevan dengan kebutuhan lokal maupun global.
+        </p>
+        <div class="social-icons">
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/radithya_wk?utm_source=qr&igsh=MmFhNjg5eWJneXo5"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+        <a href="#" class="btn">Hire me</a>
+      </div>
+    </section>
+
+    <script>
+      // Typing effect for typing-text
+      const typingText = document.querySelector(".typing-text span");
+      const cursor = document.querySelector(".cursor");
+      const words = ["Web Developerr", "Web Designerr"];
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+
+      function typeEffect() {
+        const currentWord = words[wordIndex];
+        const displayedText = isDeleting
+          ? currentWord.substring(0, charIndex--)
+          : currentWord.substring(0, charIndex++);
+
+        typingText.textContent = displayedText;
+        cursor.style.left = `${typingText.offsetWidth}px`;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          isDeleting = true;
+          setTimeout(typeEffect, 2000); // Pause before deleting
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          setTimeout(typeEffect, 500); // Pause before typing next word
+        } else {
+          setTimeout(typeEffect, isDeleting ? 100 : 200);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", typeEffect);
+    </script>
+  </body>
+</html>
